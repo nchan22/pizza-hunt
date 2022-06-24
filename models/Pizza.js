@@ -37,6 +37,7 @@ const PizzaSchema = new Schema(
       virtuals: true,
       getters: true,
     },
+    // prevents virtuals from creating duplicate of _id as `id`
     id: false,
   }
 );
@@ -49,8 +50,6 @@ PizzaSchema.virtual("commentCount").get(function () {
   );
 });
 
-// create the Pizza model using the PizzaSchema
 const Pizza = model("Pizza", PizzaSchema);
 
-// export the Pizza model
 module.exports = Pizza;
